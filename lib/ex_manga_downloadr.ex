@@ -26,8 +26,6 @@ defmodule ExMangaDownloadr do
   def retryable_http_get(url, retries \\ @max_retries)
   def retryable_http_get(url, 0), do: raise "Failed to fetch from #{url} after #{@max_retries} retries."
   def retryable_http_get(url, retries) when retries > 0 do
-    require Logger
-    Logger.info("Fetching #{inspect(self())} - #{url}")
 
     try do
       cache_path = "/tmp/ex_manga_downloadr_cache/#{cache_filename(url)}"
